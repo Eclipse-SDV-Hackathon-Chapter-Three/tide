@@ -24,7 +24,7 @@ def on_message(client, userdata, message):
 
         # Handle messages from topic2 (rider_status)
         elif message.topic == topic2:
-            rider_in_vehicle = data
+            rider_in_vehicle = data.get("Rider_in_vehicle")
             print(f"Rider in Vehicle: {rider_in_vehicle}")
 
     except json.JSONDecodeError:
