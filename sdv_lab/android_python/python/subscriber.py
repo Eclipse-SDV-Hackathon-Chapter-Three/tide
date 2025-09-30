@@ -15,8 +15,7 @@ topic2 = config["topics"]["rider_status"]
 def on_message(client, userdata, message):    
     try:
         data = json.loads(message.payload.decode())
-        print(f"Received message on {message.topic}: {json.dumps(data, indent=2)}")
-
+        
         # Handle messages from topic1 (vehicle_parameters)
         if message.topic == topic1:
             speed = data.get("Speed", 0)
