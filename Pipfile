@@ -6,8 +6,9 @@ name = "pypi"
 [packages]
 paho-mqtt = "==1.6.1"
 pydantic = "*"
+carla = "0.9.16"
 
 [dev-packages]
 
 [requires]
-python_version = "3.13"
+python_version = "3.7"
