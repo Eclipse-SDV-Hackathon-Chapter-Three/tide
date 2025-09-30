@@ -36,6 +36,10 @@ The difference between Google Maps and Waze and our application is ours relies o
 
 In addition, our application will report when a driver decides to leave the vehicle. This couples with the first feature to essentially report when an obstacle caused the autonomous drive to become undesirable for customers.
 
+In user story format
+- As a driver, I want to be alerted when there is a police car ahead of me so that I can slow down and avoid getting a ticket.
+- As a city ordinator, I want to know if the cities robo-taxi service is being used so I know if the cities millions of dollars spent on the service is being used effectively
+
 *Sketch something that helps understand e.g. mermaid chart*
 
 ---
@@ -45,7 +49,7 @@ In addition, our application will report when a driver decides to leave the vehi
 ## Development Process  
 *Brief overview of your development process.*
 
-Our team has two sub-teams
+Our team has three sub-teams
 - Carla Simulation Team
   - Kenny Mead
   - Leonardo Ferrari
@@ -73,6 +77,8 @@ Coding standards
 - We will use type hints in Python code
 - We will use Docker devcontainers to ensure everyone has the same development environment
 - We will use Sonarqube for static code analysis and security vulnerability detection 
+
+We have a branch protection rule preventing pushes to main. This way code is always opened on a feature branch and put in a pull request for review
 
 ### Planning & Tracking  
 *How do you plan and track progress?*
