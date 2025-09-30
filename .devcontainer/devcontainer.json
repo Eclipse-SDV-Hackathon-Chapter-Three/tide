@@ -1,0 +1,41 @@
+{
+    "name": "tide",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "runArgs": [
+        "--privileged"
+    ],
+    "containerEnv": {
+        "WORKSPACE_FOLDER": "${containerWorkspaceFolder}"
+    },
+    "mounts": [
+        {
+            "type": "bind",
+            "source": "${localWorkspaceFolder}/.devcontainer/scripts",
+            "target": "/home/vscode/scripts"
+        },
+        {
+            "type": "bind",
+            "source": "${localEnv:HOME}${localEnv:USERPROFILE}/.ssh",
+            "target": "/home/vscode/.ssh"
+        }
+    ],
+    "postCreateCommand": ".devcontainer/scripts/post-create.sh --workspace-folder='${containerWorkspaceFolder}'",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/${localWorkspaceFolderBasename}/,type=bind",
+    "workspaceFolder": "/workspace/${localWorkspaceFolderBasename}/",
+    "remoteUser": "vscode",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "yzhang.markdown-all-in-one",
+                "bierner.markdown-mermaid",
+                "davidanson.vscode-markdownlint",
+                "ms-python.python",
+                "ms-python.black-formatter",
+                "eamodio.gitlens",
+                "usernamehw.errorlens"
+            ]
+        }
+    }
+}
