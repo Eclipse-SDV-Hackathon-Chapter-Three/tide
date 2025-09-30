@@ -35,6 +35,7 @@ configs:
       "keepalive": 60,
       "topics": {
         "vehicle_parameters": "vehicle/parameters"
+        "rider_stutus": "rider/status"
       }
     }
   publisher_data: |
