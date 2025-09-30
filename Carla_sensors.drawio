@@ -1,0 +1,173 @@
+<mxfile host="65bd71144e">
+    <diagram id="nStgQwYRXJMON5NWRh9A" name="Page-1">
+        <mxGraphModel dx="2963" dy="1029" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="98" style="edgeStyle=none;html=1;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-690" y="340" as="targetPoint"/>
+                        <mxPoint x="-380" y="340" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="101" value="Asks to start monitoring for actor &lt;br&gt;with tag at location" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="98">
+                    <mxGeometry x="0.129" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="107" style="edgeStyle=none;html=1;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint y="230" as="targetPoint"/>
+                        <mxPoint x="-150" y="230" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="108" value="Sends events to" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="107">
+                    <mxGeometry x="-0.0876" y="-2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" value="Notification Server" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-380" y="60" width="230" height="410" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="" style="image;html=1;image=img/lib/clip_art/computers/Server_Rack_128x128.png" vertex="1" parent="46">
+                    <mxGeometry y="35" width="50" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" value="Notification App" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="46">
+                    <mxGeometry x="15" y="105" width="200" height="275" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="71">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="110" y="180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="73" value="&lt;b&gt;Watches for actors with tag&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="71">
+                    <mxGeometry x="10" y="40" width="180" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="73">
+                    <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+                        <mxPoint x="-27" y="7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="79" value="&lt;b&gt;Accepts notifications of events that&amp;nbsp;&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="71">
+                    <mxGeometry x="10" y="120" width="180" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="80" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="79">
+                    <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+                        <mxPoint x="-27" y="7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="48" value="Car Dsahboard" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry y="110" width="200" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="104" value="&lt;b&gt;Reports what events are in the cars location&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="48">
+                    <mxGeometry x="10" y="40" width="180" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="105" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="104">
+                    <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+                        <mxPoint x="-27" y="7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="102" style="edgeStyle=none;html=1;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-380" y="390" as="targetPoint"/>
+                        <mxPoint x="-690" y="390" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="103" value="Reports when actor is no longer seen&lt;br&gt;at location" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="102">
+                    <mxGeometry x="-0.3032" y="2" relative="1" as="geometry">
+                        <mxPoint x="42" y="2" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="63" value="Vehicle" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
+                    <mxGeometry x="-1170" y="60" width="480" height="460" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="63">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="110" y="180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="67" value="" style="shape=mxgraph.signs.transportation.car_2;html=1;pointerEvents=1;fillColor=#000000;strokeColor=none;verticalLabelPosition=bottom;verticalAlign=top;align=center;" vertex="1" parent="63">
+                    <mxGeometry x="10" y="40" width="100" height="33" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="Carla" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="63">
+                    <mxGeometry x="20" y="110" width="200" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="45" source="40">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="110" y="180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="49" value="&lt;b&gt;Semantic Segmentation&lt;/b&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(51, 51, 51); font-family: Verdana;&quot;&gt;Color coded Image&lt;/span&gt;&lt;/div&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="45">
+                    <mxGeometry x="10" y="120" width="180" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="49">
+                    <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+                        <mxPoint x="-27" y="7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="51" value="&lt;b&gt;Ego-Location&lt;/b&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;XYZ vector&lt;/div&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="45">
+                    <mxGeometry x="10" y="40" width="180" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="51">
+                    <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+                        <mxPoint x="-27" y="7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="57" value="Actor Monitor" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="63">
+                    <mxGeometry x="253" y="110" width="200" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="57">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="110" y="180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="96" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="57" source="63">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="537" y="120" as="targetPoint"/>
+                        <mxPoint x="237" y="120" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="97" value="Reports when actor is seen" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="96">
+                    <mxGeometry x="-0.0645" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="61" value="&lt;b&gt;Start watching for actors with specific tag&lt;/b&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="57">
+                    <mxGeometry x="10" y="40" width="180" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="61">
+                    <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+                        <mxPoint x="-27" y="7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="89" value="Event Monitor" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="63">
+                    <mxGeometry x="253" y="280" width="200" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="89">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="110" y="180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="91" value="&lt;b&gt;Start watching for actors&lt;/b&gt;&lt;div&gt;&lt;b&gt;&amp;nbsp;with specific tag at specific location&lt;/b&gt;&lt;/div&gt;" style="html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="89">
+                    <mxGeometry x="10" y="40" width="180" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="92" value="" style="shape=module;jettyWidth=8;jettyHeight=4;" vertex="1" parent="91">
+                    <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+                        <mxPoint x="-27" y="7" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="94" style="edgeStyle=none;html=1;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-380" y="240" as="sourcePoint"/>
+                        <mxPoint x="-690" y="240" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="95" value="Asks to start monitoring for actor with tag" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="94">
+                    <mxGeometry x="0.0798" y="-4" relative="1" as="geometry">
+                        <mxPoint x="16" y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
