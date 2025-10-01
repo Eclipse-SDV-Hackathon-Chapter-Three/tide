@@ -1,6 +1,7 @@
 
 import time
 import math
+from typing import Dict
 from contract.adas_actor_event import AdasActorEvent
 from contract.mqtt.topics import Topics
 from nav_app.publishers import publish_actor_event_created
@@ -8,7 +9,7 @@ from nav_app.publishers import publish_actor_event_deleted
 import uuid
 
 # Global state for event tracking
-events_dict = {}  # key: event_counter, value: EventDetails
+events_dict: Dict[int, AdasActorEvent] = {}  # key: event_counter, value: EventDetails
 current_event = None
 event_counter = 0
 VehicleStillNearEvent = 0
@@ -29,46 +30,45 @@ def handle_vehicle_adas_actor_seen(payload: AdasActorEvent):
           f"Timestamp: {payload.timestamp}, Location: {payload.location}")
 
     is_new_event = False
-
-    if payload.actor_tag == "pedestrian":
-        if payload.is_visible:
-            # Check if this event is far from all existing events (>50m)
-            is_far = True
-            for ev in events_dict.values():
-                if distance(payload.location, ev.location) <= distance_threshold:
-                    is_far = False
-                    break
-            if is_far:
-                # New event, add to dictionary with a unique UUID
-                payload.UUID = str(uuid.uuid4())
-                current_event = payload
-                event_counter += 1
-                events_dict[event_counter] = current_event
-                VehicleStillNearEvent = 1
-                is_new_event = True
-                print(f"Started new event #{event_counter}: {current_event.dict()}")
-                publish_actor_event_created(current_event)
-            else:
-                # No need to update EventStop, just print info for all close events
-                for key, ev in events_dict.items():
-                    if distance(payload.location, ev.location) <= distance_threshold:
-                        print(f"Event #{key} is still active: {ev.dict()}")
-                        # Check if vehicle moves away from this event
-                        if distance(payload.location, ev.location) > distance_threshold:
-                            VehicleStillNearEvent = 0
-                            print(f"Vehicle is now further than {distance_threshold}m from event location of event #{key}.")
+    list_of_relevant_events = [(key, ev) for key, ev in events_dict.items() if ev.actor_tag == payload.actor_tag]
+    if payload.is_visible:
+        # Check if this event is far from all existing events (>50m)
+        is_far = True
+        for _, ev in list_of_relevant_events:
+            if distance(payload.location, ev.location) <= distance_threshold:
+                is_far = False
+                break
+        if is_far:
+            # New event, add to dictionary with a unique UUID
+            payload.UUID = str(uuid.uuid4())
+            current_event = payload
+            event_counter += 1
+            events_dict[event_counter] = current_event
+            VehicleStillNearEvent = 1
+            is_new_event = True
+            print(f"Started new event #{event_counter}: {current_event.dict()}")
+            publish_actor_event_created(current_event)
         else:
-            # Remove events that become passive (vehicle is close and not visible)
-            to_remove = []
-            for key, ev in events_dict.items():
-                if VehicleStillNearEvent == 0 and distance(payload.location, ev.location) <= distance_threshold:
-                    print(f"Event #{key} ended and will be removed: {ev.dict()}")
-                    to_remove.append(key)
-                    # Publish the deleted event before removing
-                    publish_actor_event_deleted(ev)
-            for key in to_remove:
-                print(f"Removing event #{key} from dictionary.")
-                del events_dict[key]
+            # No need to update EventStop, just print info for all close events
+            for key, ev in list_of_relevant_events:
+                if distance(payload.location, ev.location) <= distance_threshold:
+                    print(f"Event #{key} is still active: {ev.dict()}")
+                    # Check if vehicle moves away from this event
+                    if distance(payload.location, ev.location) > distance_threshold:
+                        VehicleStillNearEvent = 0
+                        print(f"Vehicle is now further than {distance_threshold}m from event location of event #{key}.")
+    else:
+        # Remove events that become passive (vehicle is close and not visible)
+        to_remove = []
+        for key, ev in events_dict.items():
+            if VehicleStillNearEvent == 0 and distance(payload.location, ev.location) <= distance_threshold:
+                print(f"Event #{key} ended and will be removed: {ev.dict()}")
+                to_remove.append(key)
+                # Publish the deleted event before removing
+                publish_actor_event_deleted(ev)
+        for key in to_remove:
+            print(f"Removing event #{key} from dictionary.")
+            del events_dict[key]
 
 
 
