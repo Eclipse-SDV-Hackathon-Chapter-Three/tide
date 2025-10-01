@@ -25,8 +25,6 @@ def initialize_mqtt_client():
     def on_message(client, userdata, message):
         try:
             payload = json.loads(message.payload.decode())
-            print(
-                f"Received message on {message.topic}: {json.dumps(payload, indent=2)}")
             topic = message.topic
             topic_handler = TOPIC_HANDLERS.get(topic, DEFAULT_HANDLER)
             topic_handler(payload)
