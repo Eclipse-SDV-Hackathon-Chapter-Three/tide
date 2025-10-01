@@ -33,6 +33,8 @@ import com.example.digitalclusterapp.feature.cluster.ui.component.ClusterRightDi
 import com.example.digitalclusterapp.feature.cluster.ui.component.ClusterSpeedDisplay
 import com.example.digitalclusterapp.feature.cluster.ui.component.ClusterTopBar
 import com.example.digitalclusterapp.feature.cluster.ui.component.ControlButtons
+import com.example.digitalclusterapp.feature.cluster.ui.component.NotificationMessage
+
 
 /**
  * A modern automotive instrument cluster UI component.
@@ -140,6 +142,14 @@ fun Cluster(
 //            state = state
 //        )
     }
+
+    // Notification Message on the right side
+    NotificationMessage(
+        iconRes = R.drawable.ic_warning, // Replace with your warning icon resource
+        message = "Low Tire Pressure",
+        modifier = Modifier.align(Alignment.CenterEnd)
+    )
+
 
     // Control buttons
     Box(Modifier.padding(top = 90.dp)) {
