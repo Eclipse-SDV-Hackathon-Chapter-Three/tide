@@ -33,11 +33,11 @@ fun NotificationMessage(
 ) {
     Box(
         modifier = modifier,
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.CenterEnd
     ) {
         Row(
             modifier = Modifier
-                .padding(16.dp),
+                .padding(90.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
