@@ -4,3 +4,4 @@ class Topics:
     VEHICLE_ADAS_ACTOR_EVENT_DELETED = "vehicle/adas-actor/event_deleted"
     VEHICLE_ADAS_ACTOR_SHOULD_MONITOR = "vehicle/adas-actor/should-monitor",
     VEHICLE_PASSENGER_LEFT = "vehicle/passenger/left",
+    VEHICLE_SENSORS_SEMANTIC_SEGMENTATION = "vehicle/sensors/semantic-segmentation",
