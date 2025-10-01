@@ -27,6 +27,7 @@ import com.example.digitalclusterapp.feature.cluster.ui.component.ClusterRightDi
 import com.example.digitalclusterapp.feature.cluster.ui.component.ClusterSpeedDisplay
 import com.example.digitalclusterapp.feature.cluster.ui.component.ClusterTopBar
 import com.example.digitalclusterapp.feature.cluster.ui.component.ControlButtons
+import com.example.digitalclusterapp.feature.cluster.ui.component.ClusterMapDisplay
 
 /**
  * A modern automotive instrument cluster UI component.
@@ -72,6 +73,13 @@ fun Cluster(
                 cruiseControl = state.cruiseControl
             )
         }
+
+        // Central map display
+        ClusterMapDisplay(
+            modifier = Modifier
+                .align(Alignment.Center)
+                .padding(top = 20.dp)
+        )
 
         // Central mode display
 //        ClusterModeDisplay(
@@ -125,11 +133,11 @@ fun Cluster(
         // )
     }
     Box(
-        Modifier.padding(top = 90.dp)
+        Modifier.padding(top = 300.dp)
     ) {
         ControlButtons(
             modifier = Modifier
-                .align(Alignment.BottomEnd)
+                .align(Alignment.BottomCenter)
                 .padding(top = 20.dp)
                 .width(500.dp),
             onAction = onAction,
