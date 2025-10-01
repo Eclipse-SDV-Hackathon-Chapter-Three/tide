@@ -16,3 +16,7 @@ def publish_actor_event_created(payload: AdasActorEvent):
     print("Publishing actor event created:", payload)
     CLIENT.publish(Topics.VEHICLE_ADAS_ACTOR_EVENT_CREATED, json.dumps(payload))
 
+def publish_actor_event_deleted(payload: AdasActorEvent):
+    print("Publishing actor event deleted:", payload)
+    CLIENT.publish(Topics.VEHICLE_ADAS_ACTOR_EVENT_DELETED, json.dumps(payload))
+
