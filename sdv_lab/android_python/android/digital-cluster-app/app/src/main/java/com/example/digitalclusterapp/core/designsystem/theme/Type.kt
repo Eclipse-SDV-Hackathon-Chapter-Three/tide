@@ -17,7 +17,7 @@ object ClusterTypography {
 
     val mainSpeed = TextStyle(
         fontFamily = clusterFont,
-        fontSize = 110.sp,
+        fontSize = 60.sp,
         fontWeight = FontWeight.Normal,
         color = ClusterColors.TextWhite
     )
@@ -58,7 +58,7 @@ object ClusterTypography {
 
     val rangeValueText = TextStyle(
         fontFamily = clusterFont,
-        fontSize = 50.sp,
+        fontSize = 40.sp,
         fontWeight = FontWeight.Normal,
         color = ClusterColors.TextWhite
     )
