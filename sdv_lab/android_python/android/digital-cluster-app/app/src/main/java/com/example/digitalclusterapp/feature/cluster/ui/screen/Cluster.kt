@@ -146,7 +146,7 @@ fun Cluster(
     // Notification Message on the right side
     NotificationMessage(
         iconRes = R.drawable.ic_front_radar, // placeholder icon
-        message = "Low Tire Pressure"
+        message = "Warning: Obstacle ahead!"
     )
 
 
