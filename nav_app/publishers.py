@@ -9,7 +9,7 @@ def publish_should_monitor_event():
     should_monitor_payload = AdasActorMonitorEvent(
         actor_tag="pedestrian", should_monitor=True
     )
-
+    print("Publishing should monitor event:", should_monitor_payload)
     CLIENT.publish(Topics.VEHICLE_ADAS_ACTOR_SHOULD_MONITOR, json.dumps(should_monitor_payload))
 
 def publish_actor_event_created(payload: AdasActorEvent):
