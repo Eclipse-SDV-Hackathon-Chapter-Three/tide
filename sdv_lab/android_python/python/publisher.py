@@ -9,12 +9,17 @@ with open("mqtt_config.json") as f:
 broker = config["broker"]
 port = config["port"]
 keepalive = config.get("keepalive", 60)
-topic = config["topics"]["vehicle_parameters"]
+topic1 = config["topics"]["vehicle_parameters"]
+topic2 = config["topics"]["rider_status"]
 
 # Load payload from data.json file
-with open("data.json") as f:
-    payload = json.load(f)
-print("Loaded payload from data.json")
+with open("data1.json") as f:
+    payload1 = json.load(f)
+print("Loaded payload from data1.json")
+
+with open("data2.json") as f:
+    payload2 = json.load(f)
+print("Loaded payload from data2.json")
 
 # Create MQTT client
 client = mqtt.Client()
@@ -22,7 +27,8 @@ client.connect(broker, port, keepalive)
 client.loop_start()  # Start network loop
 
 # Variables for speed control
-speed = payload.get("Speed", 0)
+speed = payload1.get("Speed", 0)
+rider_in_vehicle = payload2.get("Rider_in_vehicle", True)
 direction = 1  # 1 = increasing, -1 = decreasing
 
 try:
@@ -35,14 +41,17 @@ try:
             direction = -1
         elif speed <= 0:
             direction = 1
+            rider_in_vehicle = False    # Simulate rider leaving the vehicle at speed 0
 
         # Update payload
-        payload["Speed"] = speed
+        payload1["Speed"] = speed
+        payload2["Rider_in_vehicle"] = rider_in_vehicle
 
         # Publish updated payload
-        client.publish(topic, json.dumps(payload))
-        print(f"Published Speed={speed} to {topic}")
-
+        client.publish(topic1, json.dumps(payload1))
+        client.publish(topic2, json.dumps(payload2))
+        print(f"Published Speed={speed} to {topic1}")
+        print(f"Published Rider In Vehicle={rider_in_vehicle} to {topic2}")
         time.sleep(1)  # Wait 1 second
 
 except KeyboardInterrupt:

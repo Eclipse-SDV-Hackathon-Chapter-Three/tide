@@ -1,0 +1,9 @@
+{
+  "broker": "192.168.41.250",
+  "port": 1883,
+  "keepalive": 60,
+  "topics": {
+    "vehicle_parameters": "vehicle/parameters",
+    "rider_status": "rider/status"
+  }
+}

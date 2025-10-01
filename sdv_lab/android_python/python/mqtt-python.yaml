@@ -34,7 +34,8 @@ configs:
       "port": 1883,
       "keepalive": 60,
       "topics": {
-        "vehicle_parameters": "vehicle/parameters"
+        "vehicle_parameters": "vehicle/parameters",
+        "rider_stutus": "rider/status"
       }
     }
   publisher_data: |
