@@ -34,7 +34,8 @@
                 "ms-python.python",
                 "ms-python.black-formatter",
                 "eamodio.gitlens",
-                "usernamehw.errorlens"
+                "usernamehw.errorlens",
+                "Anthropic.claude-code"
             ]
         }
     }

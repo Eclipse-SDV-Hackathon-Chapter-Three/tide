@@ -1,3 +1,4 @@
 {
-	
+  "broker": "localhost",
+  "port": 1883
 }

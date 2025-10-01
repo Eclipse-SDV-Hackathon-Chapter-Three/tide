@@ -45,7 +45,7 @@ class MqttClusterBinder(
         private const val BATCH_TIMEOUT_MS = 50L
 
         // MQTT Configuration
-        private const val BROKER_HOST = "192.168.41.250" // Replace with your broker host
+        private const val BROKER_HOST = "10.0.2.2" // Replace with your broker host
         private const val BROKER_PORT = 1883 // Default MQTT port
         private const val CLIENT_ID_PREFIX = "AndroidCluster-"
         private const val TOPIC = "vehicle/parameters" // Replace with your topic
@@ -59,9 +59,6 @@ class MqttClusterBinder(
             "infotainment/status",
             "infotainment/screen_command"
         )
-
-        // Topics for publishing user actions back to nav_app
-        private const val USER_ACTION_TOPIC = "user/action"
     }
 
     init {
@@ -582,60 +579,5 @@ class MqttClusterBinder(
             Log.e(TAG, "Error publishing message", e)
         }
         return false
-    }
-
-    /**
-     * Publishes a user action to nav_app backend
-     *
-     * @param action Action type (e.g., "select_alternative", "accept_reroute", "dismiss_alert")
-     * @param data Additional data for the action
-     */
-    fun publishUserAction(action: String, data: Map<String, Any>): Boolean {
-        try {
-            val json = JSONObject().apply {
-                put("action", action)
-                put("data", JSONObject(data))
-            }
-            val message = json.toString()
-            Log.d(TAG, "Publishing user action: $action")
-            return publishMessage(USER_ACTION_TOPIC, message)
-        } catch (e: Exception) {
-            Log.e(TAG, "Error publishing user action", e)
-            return false
-        }
-    }
-
-    /**
-     * User selects an alternative transport option
-     *
-     * @param transportMode The chosen transport mode (e.g., "public_transit", "taxi", "walk")
-     * @param autonomousMode The autonomous mode (e.g., "return_home", "continue_to_destination")
-     */
-    fun selectAlternativeTransport(transportMode: String, autonomousMode: String = "return_home"): Boolean {
-        return publishUserAction("select_alternative", mapOf(
-            "transport_mode" to transportMode,
-            "autonomous_mode" to autonomousMode
-        ))
-    }
-
-    /**
-     * User accepts a reroute notification
-     */
-    fun acceptReroute(): Boolean {
-        return publishUserAction("accept_reroute", emptyMap())
-    }
-
-    /**
-     * User dismisses an alert
-     */
-    fun dismissAlert(): Boolean {
-        return publishUserAction("dismiss_alert", emptyMap())
-    }
-
-    /**
-     * User cancels autonomous mode activation
-     */
-    fun cancelAutonomous(): Boolean {
-        return publishUserAction("cancel_autonomous", emptyMap())
     }
 }

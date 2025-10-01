@@ -8,3 +8,4 @@ class AdasActorEvent(BaseModel):
     is_visible: bool
     timestamp: datetime
     location: Tuple[float, float, float]
+    seen_amb: bool
