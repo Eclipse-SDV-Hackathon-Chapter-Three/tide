@@ -145,9 +145,9 @@ fun Cluster(
 
     // Notification Message on the right side
     NotificationMessage(
-        iconRes = R.drawable.ic_warning, // Replace with your warning icon resource
+        iconRes = R.drawable.ic_right_arrow, // placeholder icon
         message = "Low Tire Pressure",
-        modifier = Modifier.align(Alignment.CenterEnd)
+        modifier = Modifier.align(Alignment.Center)
     )
 
 
