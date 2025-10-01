@@ -1,7 +1,5 @@
-import json
 from typing import Dict
 from contract.adas_actor_event import AdasActorEvent
-from nav_app.publishers import publish_actor_event_created
 import math
 from infotainment_app.notification_manager import update_notification_message
 
@@ -16,23 +14,24 @@ def distance(loc1, loc2):
         (loc1[2] - loc2[2]) ** 2
     )
 
-def handle_actor_event_created(payload: dict):
+def handle_actor_event_created(payload: AdasActorEvent):
     global active_events
 
-    event = AdasActorEvent(**payload)
-    if event.UUID not in active_events:
-        active_events[event.UUID] = event
-        print(f"Added new active event: {event.UUID}")
+    if payload.UUID not in active_events:
+        active_events[payload.UUID] = payload
+        print(f"Added new active event: {payload.UUID}")
         # Check if the car is close enough to the event
-        car_location = payload.get("location", (0, 0, 0))  # Use payload.location as the car's location
-        if distance(car_location, event.location) <= 50:  # Threshold distance in meters
-            notification_message = f"Event Location: {event.location}"
+        car_location = payload.location
+        if distance(car_location, payload.location) <= 50:  # Threshold distance in meters
+            print("Event is in of range")
+            notification_message = f"Event Location: {payload.location}"
             update_notification_message(notification_message)
+        else:
+            print("Event is out of range")
 
-def handle_actor_event_deleted(payload: dict):
+def handle_actor_event_deleted(payload: AdasActorEvent):
     global active_events
 
-    event = AdasActorEvent(**payload)
-    if event.UUID in active_events:
-        del active_events[event.UUID]
-        print(f"Removed active event: {event.UUID}")
+    if payload.UUID in active_events:
+        del active_events[payload.UUID]
+        print(f"Removed active event: {payload.UUID}")

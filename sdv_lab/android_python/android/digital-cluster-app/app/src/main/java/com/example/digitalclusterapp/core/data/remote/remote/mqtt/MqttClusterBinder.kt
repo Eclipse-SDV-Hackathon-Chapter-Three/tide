@@ -45,7 +45,7 @@ class MqttClusterBinder(
         private const val BATCH_TIMEOUT_MS = 50L
 
         // MQTT Configuration
-        private const val BROKER_HOST = "10.0.2.2" // Replace with your broker host
+        private const val BROKER_HOST = "localhost" // Replace with your broker host
         private const val BROKER_PORT = 1883 // Default MQTT port
         private const val CLIENT_ID_PREFIX = "AndroidCluster-"
         private const val TOPIC = "vehicle/infotainment/notification_update" // Replace with your topic
