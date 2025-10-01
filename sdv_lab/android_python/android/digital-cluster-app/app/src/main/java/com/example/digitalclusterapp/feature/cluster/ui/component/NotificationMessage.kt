@@ -31,27 +31,32 @@ fun NotificationMessage(
     message: String,
     modifier: Modifier = Modifier
 ) {
-    Row(
-        modifier = modifier
-            .padding(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.Center
     ) {
-        // Warning Icon
-        Image(
-            painter = painterResource(id = iconRes),
-            contentDescription = "Warning Icon",
-            contentScale = ContentScale.Fit,
-            modifier = Modifier.size(24.dp)
-        )
-
-        // Notification Text
-        Text(
-            text = message,
-            style = TextStyle(
-                color = Color.White,
-                fontSize = 16.sp
+        Row(
+            modifier = Modifier
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Warning Icon
+            Image(
+                painter = painterResource(id = iconRes),
+                contentDescription = "Warning Icon",
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.size(24.dp)
             )
-        )
+
+            // Notification Text
+            Text(
+                text = message,
+                style = TextStyle(
+                    color = Color.White,
+                    fontSize = 16.sp
+                )
+            )
+        }
     }
 }
