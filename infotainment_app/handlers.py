@@ -24,7 +24,7 @@ def handle_actor_event_created(payload: AdasActorEvent):
         car_location = payload.location
         if distance(car_location, payload.location) <= 50:  # Threshold distance in meters
             print("Event is in of range")
-            notification_message = f"Event Location: {payload.location}"
+            notification_message = f"Incident detected at: {payload.location}"
             update_notification_message(notification_message)
         else:
             print("Event is out of range")
