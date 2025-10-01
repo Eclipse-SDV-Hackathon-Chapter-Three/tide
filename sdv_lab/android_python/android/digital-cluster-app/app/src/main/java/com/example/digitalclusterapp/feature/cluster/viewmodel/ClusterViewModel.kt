@@ -63,6 +63,17 @@ class ClusterViewModel @Inject constructor(
     }
 
     /**
+     * Updates the notification message in the cluster state.
+     */
+    fun updateNotificationMessage(newMessage: String) {
+        viewModelScope.launch {
+            val currentState = state.value
+            val updatedState = currentState.copy(notificationMessage = newMessage)
+            repository.updateClusterState(updatedState)
+        }
+    }
+
+    /**
      * Handles cluster actions
      */
     fun handleAction(action: ClusterAction) {
