@@ -1,7 +1,7 @@
 
 import numpy as np
 from contract.adas_actor_event import AdasActorEvent
-from on_vehicle_app.actor_events import make_actor_event
+from on_vehicle_app.actor_events import make_brand_new_actor_event
 from on_vehicle_app.constants import CARLA_CLASS_LABELS
 
 def get_ego_location() -> tuple[float, float, float]:
@@ -28,7 +28,7 @@ def create_fake_semantic_segmentation_sensor_data() -> AdasActorEvent:
     class_id = 12  # Pedestrian
     actor_tag = CARLA_CLASS_LABELS[class_id]
 
-    evt: AdasActorEvent = make_actor_event(
+    evt: AdasActorEvent = make_brand_new_actor_event(
         raw_data=raw,
         width=width,
         height=height,

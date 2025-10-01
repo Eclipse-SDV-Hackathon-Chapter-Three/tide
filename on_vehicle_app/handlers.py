@@ -9,3 +9,12 @@ def handle_vehicle_adas_actor_should_monitor(payload: AdasActorMonitorEvent):
     else:
         ACTORS_BEING_MONITORED.remove(payload.actor_tag)
         print(f"Stopped monitoring actor: {payload.actor_tag}")
+
+def handle_vehicle_sensors_semantic_segmentation(payload: AdasActorMonitorEvent):
+    if payload.should_monitor not in ACTORS_BEING_MONITORED:
+        ACTORS_BEING_MONITORED.append(payload.actor_tag)
+        print(f"Now monitoring actor: {payload.actor_tag}")
+    else:
+        ACTORS_BEING_MONITORED.remove(payload.actor_tag)
+        print(f"Stopped monitoring actor: {payload.actor_tag}")
+
