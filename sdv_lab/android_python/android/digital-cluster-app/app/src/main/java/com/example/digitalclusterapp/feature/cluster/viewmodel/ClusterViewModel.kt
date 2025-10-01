@@ -2,6 +2,7 @@ package com.example.digitalclusterapp.feature.cluster.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import android.util.Log
 import com.example.digitalclusterapp.core.data.repository.MqttClusterRepository
 import com.example.digitalclusterapp.core.domain.action.ClusterAction
 import com.example.digitalclusterapp.core.domain.model.CentralScreenState
@@ -28,6 +29,10 @@ class ClusterViewModel @Inject constructor(
     private val repository: MqttClusterRepository
 ) : ViewModel() {
 
+    companion object {
+        private const val TAG = "ClusterViewModel"
+    }
+
     // Cache the latest state to avoid unnecessary repository calls
     private var cachedState: ClusterState? = null
 
@@ -35,7 +40,10 @@ class ClusterViewModel @Inject constructor(
      * Current state of the cluster display.
      */
     val state: StateFlow<ClusterState> = repository.state
-        .onEach { cachedState = it }
+        .onEach { 
+            cachedState = it 
+            Log.d(TAG, "State updated in ViewModel. NotificationMessage: '${it.notificationMessage}'")
+        }
         .stateIn(viewModelScope, SharingStarted.Eagerly, ClusterState())
 
     /**

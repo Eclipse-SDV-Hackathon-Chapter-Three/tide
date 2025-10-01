@@ -209,7 +209,10 @@ class MqttClusterBinder(
         // Only update state if something changed
         if (changed) {
             _state.value = next
-            Log.d(TAG, "Updated state after batch processing: $next")
+            Log.d(TAG, "Updated state after batch processing. New notificationMessage: '${next.notificationMessage}'")
+            Log.d(TAG, "Full updated state: $next")
+        } else {
+            Log.d(TAG, "No state changes detected in batch processing")
         }
     }
 
@@ -222,6 +225,7 @@ class MqttClusterBinder(
         var changed = false
 
         try {
+            Log.d(TAG, "Processing JSON payload: $jsonData")
             // Map JSON fields to ClusterState properties with change tracking
             jsonData.optInt("Speed", current.speed).let {
                 if (it != current.speed) {
@@ -307,10 +311,12 @@ class MqttClusterBinder(
                 }
             }
 
-            jsonData.optString("NotificationMessage", current.notificationMessage).let {
+            jsonData.optString("notificationMessage", current.notificationMessage).let {
+                Log.d(TAG, "Processing notificationMessage: extracted='$it', current='${current.notificationMessage}'")
                 if (it != current.notificationMessage) {
                     next = next.copy(notificationMessage = it)
                     changed = true
+                    Log.d(TAG, "NotificationMessage updated from '${current.notificationMessage}' to '$it'")
                 }
             }
 
