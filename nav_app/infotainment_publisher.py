@@ -40,7 +40,7 @@ class InfotainmentPublisher:
         self.REROUTE_TOPIC = "infotainment/reroute"
         self.ALTERNATIVES_TOPIC = "infotainment/alternatives"
         self.AUTONOMOUS_TOPIC = "infotainment/autonomous"
-        self.STATUS_TOPIC = "infotainment/status"
+        self.STATUS_TOPIC = "vehicle/adas-actor/seen"
         self.SCREEN_COMMAND_TOPIC = "infotainment/screen_command"
 
         # Map hazard types to icon identifiers (Android will have these icons)

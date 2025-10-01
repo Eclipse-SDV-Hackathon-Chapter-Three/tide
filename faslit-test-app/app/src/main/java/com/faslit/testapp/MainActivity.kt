@@ -29,6 +29,8 @@ import com.google.maps.android.compose.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.Job
 import org.eclipse.paho.client.mqttv3.*
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence
 import org.json.JSONObject
@@ -412,12 +414,13 @@ class FASLitViewModel : ViewModel() {
         "infotainment/reroute",
         "infotainment/alternatives",
         "infotainment/autonomous",
-        "infotainment/status",
+        "vehicle/adas-actor/seen",
         "infotainment/screen_command"
     )
 
     private var mqttClient: MqttClient? = null
     private val dateFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+    private var reconnectJob: Job? = null
 
     private val _connectionStatus = MutableStateFlow(ConnectionStatus.DISCONNECTED)
     val connectionStatus: StateFlow<ConnectionStatus> = _connectionStatus
@@ -446,6 +449,8 @@ class FASLitViewModel : ViewModel() {
                     override fun connectionLost(cause: Throwable?) {
                         _connectionStatus.value = ConnectionStatus.DISCONNECTED
                         addMessage(MessageType.OTHER, "Connection Lost", cause?.message ?: "Unknown error")
+                        // Start reconnection attempts
+                        startReconnectLoop()
                     }
 
                     override fun messageArrived(topic: String?, message: MqttMessage?) {
@@ -471,12 +476,34 @@ class FASLitViewModel : ViewModel() {
             } catch (e: Exception) {
                 _connectionStatus.value = ConnectionStatus.DISCONNECTED
                 addMessage(MessageType.OTHER, "Connection Error", e.message ?: "Failed to connect")
+                // Start reconnection attempts
+                startReconnectLoop()
+            }
+        }
+    }
+
+    private fun startReconnectLoop() {
+        // Cancel any existing reconnect job
+        reconnectJob?.cancel()
+
+        reconnectJob = viewModelScope.launch {
+            while (_connectionStatus.value != ConnectionStatus.CONNECTED) {
+                delay(10000) // Wait 10 seconds
+
+                if (_connectionStatus.value != ConnectionStatus.CONNECTED) {
+                    addMessage(MessageType.OTHER, "Reconnecting", "Attempting to reconnect to MQTT broker...")
+                    connect()
+                }
             }
         }
     }
 
     fun disconnect() {
         try {
+            // Cancel reconnection attempts
+            reconnectJob?.cancel()
+            reconnectJob = null
+
             mqttClient?.disconnect()
             mqttClient?.close()
             _connectionStatus.value = ConnectionStatus.DISCONNECTED

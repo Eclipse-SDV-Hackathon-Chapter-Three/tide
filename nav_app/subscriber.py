@@ -75,8 +75,8 @@ class FASlitNavigationApp:
 		self.mqtt_client.on_connect = self._on_connect
 
 		# Topics
-		self.adas_actor_event_topic = "adas_actor_event"
-		self.passenger_exit_topic = "passenger_exit"
+		self.adas_actor_event_topic = "vehicle/adas-actor/seen"
+		self.passenger_exit_topic = "vehicle/passenger/left"
 		self.vehicle_data_topic = "vehicle/data"
 		self.user_action_topic = "user/action"  # From infotainment display
 

@@ -1,0 +1,5 @@
+{
+  "broker": "localhost",
+  "port": 1883,
+  "comment": "Use this config for local testing with mosquitto broker running on your machine"
+}
