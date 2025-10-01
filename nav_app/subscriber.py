@@ -456,19 +456,6 @@ class FASlitNavigationApp:
 		self.current_location = tuple(data.get('location', self.current_location))
 		new_speed = data.get('speed', self.current_speed)
 		
-
-
-
-		# seen_amb = tuple(data.get('seen_amb', self.seen_amb))
-		# if seen_amb:
-		# 	self.loc_amb_seen.append(self.current_location)
-		# 	self.infotainment.publish_hazard_detected()
-		# elif self.current_location in self.loc_amb_seen:
-		# 	self.loc_amb_seen.remove(self.current_location)
-
-
-
-
 		# Track if vehicle is stuck
 		if new_speed < 10.0:  # Less than 10 km/h
 			time_diff = (datetime.now() - self.last_speed_check).seconds / 60

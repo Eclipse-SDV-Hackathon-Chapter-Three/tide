@@ -18,8 +18,8 @@ Verify that your nav-app correctly:
 ```bash
 # Edit mqtt_config.json
 {
-  "broker": "192.168.41.250",  # ← Team laptop IP
-  "port": 1883
+"broker": "192.168.41.250",  # ← Team laptop IP
+"port": 1883
 }
 ```
 
@@ -33,13 +33,13 @@ Verify that your nav-app correctly:
 **Option B - Manual (3 terminals):**
 ```bash
 # Terminal 1
-python3 nav_app/subscriber.py
+PYTHONPATH=/workspace/hello pipenv run python3 nav_app/subscriber.py
 
 # Terminal 2
-python3 nav_app/test_frontend.py
+PYTHONPATH=/workspace/hello pipenv run python3 nav_app/test_frontend.py
 
 # Terminal 3
-python3 nav_app/test_simulator.py --auto
+PYTHONPATH=/workspace/hello pipenv run python3 nav_app/test_simulator.py --auto
 ```
 
 ### Step 3: Watch It Work! 🎉
@@ -137,13 +137,13 @@ python3 nav_app/test_simulator.py
 
 ## 🏆 Hackathon Demo Script
 
-1. Open `test_frontend.py` → "This displays our nav-app messages"
-2. Run `test_simulator.py --auto` → "Watch the FASLit strategy in action"
-3. Point out decisions:
-   - First Avoid → Automatic reroute
-   - Second Leave It → Alternative suggestions
-4. Show Android app → "Same integration in AAOS"
-5. Explain benefits → "Reduces congestion, helps passengers"
+7. Open `test_frontend.py` → "This displays our nav-app messages"
+8. Run `test_simulator.py --auto` → "Watch the FASLit strategy in action"
+9. Point out decisions:
+- First Avoid → Automatic reroute
+- Second Leave It → Alternative suggestions
+1. Show Android app → "Same integration in AAOS"
+2. Explain benefits → "Reduces congestion, helps passengers"
 
 ## ✅ Success Checklist
 

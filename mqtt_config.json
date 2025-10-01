@@ -1,4 +1,4 @@
 {
-  "broker": "localhost",
+  "broker": "192.168.41.250",
   "port": 1883
 }

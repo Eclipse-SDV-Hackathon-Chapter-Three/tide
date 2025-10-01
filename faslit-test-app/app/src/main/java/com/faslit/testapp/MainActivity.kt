@@ -404,7 +404,7 @@ data class FASLitMessage(
 
 class FASLitViewModel : ViewModel() {
     // MQTT Configuration - Update with your broker IP
-    private val BROKER_URL = "tcp://10.0.2.2:1883" // Change to your broker IP
+    private val BROKER_URL = "tcp://192.168.41.250:1883" // Change to your broker IP
     private val CLIENT_ID = "FASLitTestApp-${UUID.randomUUID()}"
 
     private val TOPICS = arrayOf(
