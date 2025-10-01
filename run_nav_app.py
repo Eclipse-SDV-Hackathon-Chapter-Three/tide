@@ -7,4 +7,4 @@ nav_app.subscribers.start_listening_to_topics()
 nav_app.publishers.publish_should_monitor_event()
 
 # this blocks forever
-contract.mqtt.client.start_mqtt_client()
+contract.mqtt.client.listen()
