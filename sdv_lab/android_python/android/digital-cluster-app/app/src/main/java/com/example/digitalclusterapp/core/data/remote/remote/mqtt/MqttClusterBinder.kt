@@ -207,7 +207,7 @@ class MqttClusterBinder(
         }
 
         // Only update state if something changed
-        if (changed) {
+        if (true) {
             _state.value = next
             Log.d(TAG, "Updated state after batch processing. New notificationMessage: '${next.notificationMessage}'")
             Log.d(TAG, "Full updated state: $next")
