@@ -77,6 +77,7 @@ Coding standards
 - We will use type hints in Python code
 - We will use Docker devcontainers to ensure everyone has the same development environment
 - We will use Sonarqube for static code analysis and security vulnerability detection 
+- We will use CodeQL for static code analysis to identify potential vulnerabilities and improve code quality. CodeQL is configured to analyze the codebase for security issues and other defects. 
 
 We have a branch protection rule preventing pushes to main. This way code is always opened on a feature branch and put in a pull request for review
 
