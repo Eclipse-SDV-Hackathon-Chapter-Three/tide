@@ -35,7 +35,6 @@ def initialize_mqtt_client():
             print(f"Received non-JSON message: {message.payload}")
 
     CLIENT.on_message = on_message
-    IS_INITIALIZED = True
 
 
 def listen():

@@ -1,5 +1,7 @@
 from typing import List
 
+ONLY_PRINT = False
+
 ACTORS_BEING_MONITORED: List[int] = []
 
 CARLA_CLASS_LABELS = {
