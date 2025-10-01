@@ -25,7 +25,7 @@ def detect_actor(
     return np.any(red_channel == class_id)
 
 # Build AdasActorEvent
-def make_actor_event(
+def make_brand_new_actor_event(
     raw_data: bytes,
     width: int,
     height: int,
@@ -35,6 +35,7 @@ def make_actor_event(
 ) -> AdasActorEvent:
     visible = detect_actor(raw_data, width, height, class_id)
     return AdasActorEvent(
+        UUID=None,
         actor_tag=actor_tag,
         is_visible=visible,
         timestamp=datetime.utcnow(),

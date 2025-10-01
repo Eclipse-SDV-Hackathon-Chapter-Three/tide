@@ -1,8 +1,6 @@
 
-import time
 import math
 from contract.adas_actor_event import AdasActorEvent
-from contract.mqtt.topics import Topics
 from nav_app.publishers import publish_actor_event_created
 from nav_app.publishers import publish_actor_event_deleted
 import uuid
