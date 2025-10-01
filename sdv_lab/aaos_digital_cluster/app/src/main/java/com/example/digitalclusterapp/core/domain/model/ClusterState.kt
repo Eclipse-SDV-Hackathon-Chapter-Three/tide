@@ -27,4 +27,5 @@ data class ClusterState(
     val location: Boolean = false,
     val currentCentralScreen: CentralScreenState = CentralScreenState.MODES,
     val typeOfVehicle: VehicleType = VehicleType.COMBUST
+    val notificationMessage: "Placeholder Message"
 )

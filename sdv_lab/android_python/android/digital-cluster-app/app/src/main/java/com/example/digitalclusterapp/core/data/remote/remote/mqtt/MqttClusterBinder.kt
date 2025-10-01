@@ -307,6 +307,13 @@ class MqttClusterBinder(
                 }
             }
 
+            jsonData.optString("NotificationMessage", current.notificationMessage).let {
+                if (it != current.notificationMessage) {
+                    next = next.copy(notificationMessage = it)
+                    changed = true
+                }
+            }
+
             // Handle TypeOfVehicle (0 = Petrol/Combust, 1 = Electric)
             val vehicleTypeInt = jsonData.optInt("TypeOfVehicle", -1)
             if (vehicleTypeInt != -1) {
