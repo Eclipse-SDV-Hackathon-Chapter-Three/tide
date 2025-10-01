@@ -35,6 +35,7 @@ tokio = { version = "1", features = ["full"] }
 up-rust = { version = "0.7.0" }
 up-transport-mqtt5 = "0.3.0"
 backon = { version = "1.5", default-features = false, features = ["tokio-sleep"] }
+env_logger = "0.11.8"
 
 [patch.crates-io]
 # point the carla crate at your fork/branch

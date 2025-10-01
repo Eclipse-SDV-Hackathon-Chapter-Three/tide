@@ -4,6 +4,7 @@ from pydantic import BaseModel
 
 
 class AdasActorEvent(BaseModel):
+    uuid: str | None
     actor_tag: str
     is_visible: bool
     timestamp: datetime
