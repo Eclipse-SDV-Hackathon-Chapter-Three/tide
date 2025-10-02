@@ -75,7 +75,7 @@ class FASlitNavigationApp:
 		self.mqtt_client.on_connect = self._on_connect
 
 		# Topics
-		self.adas_actor_event_topic = "vehicle/adas-actor/seen"
+		self.adas_actor_event_topic = "infotainment/status"
 		self.passenger_exit_topic = "vehicle/passenger/left"
 		self.vehicle_data_topic = "vehicle/data"
 		self.user_action_topic = "user/action"  # From infotainment display
@@ -141,6 +141,12 @@ class FASlitNavigationApp:
 			data = json.loads(message.payload.decode())
 
 			if message.topic == self.adas_actor_event_topic:
+				# Check message type to filter out non-ADAS messages
+				message_type = data.get("message_type")
+				if message_type == "vehicle_status":
+					# This is from our own infotainment publisher, skip it
+					return
+
 				event = AdasActorEvent(**data)
 				self._handle_adas_event(event)
 

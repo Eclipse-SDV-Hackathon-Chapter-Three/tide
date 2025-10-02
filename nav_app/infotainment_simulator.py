@@ -25,7 +25,7 @@ class InfotainmentSimulator:
             "infotainment/reroute",
             "infotainment/alternatives",
             "infotainment/autonomous",
-            "vehicle/adas-actor/seen",
+            "infotainment/status",
             "infotainment/screen_command"
         ]
 
