@@ -154,7 +154,7 @@ fun Cluster(
     Box(Modifier.padding(top = 370.dp)) {
         ControlButtons(
             modifier = Modifier
-                .align(Alignment.BottomEnd)
+                .align(Alignment.BottomCenter)
                 .padding(top = 20.dp)
                 .width(500.dp),
             onAction = onAction,
