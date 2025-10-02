@@ -145,7 +145,7 @@ fun Cluster(
 
     // Notification Message on the right side
     NotificationMessage(
-        iconRes = R.drawable.ic_front_radar, // placeholder icon
+        iconRes = R.drawable.car-accident-symbol, // placeholder icon
         message = state.notificationMessage
     )
 
