@@ -41,13 +41,15 @@ fun NotificationMessage(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Warning Icon
-            Image(
-                painter = painterResource(id = iconRes),
-                contentDescription = "Warning Icon",
-                contentScale = ContentScale.Fit,
-                modifier = Modifier.size(24.dp)
-            )
+            // Warning Icon - only display if message is not empty
+            if (message.isNotEmpty()) {
+                Image(
+                    painter = painterResource(id = iconRes),
+                    contentDescription = "Warning Icon",
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
 
             // Notification Text
             Text(
