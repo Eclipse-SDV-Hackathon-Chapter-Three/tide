@@ -11,6 +11,7 @@ port = config["port"]
 keepalive = config.get("keepalive", 60)
 topic = config["topics"]["vehicle_parameters"]
 
+
 # Load payload from data.json file
 with open("data.json") as f:
     payload = json.load(f)
@@ -23,6 +24,7 @@ client.loop_start()  # Start network loop
 
 # Variables for speed control
 speed = payload.get("Speed", 0)
+rider_in_vehicle = payload.get("Rider_in_vehicle", True)
 direction = 1  # 1 = increasing, -1 = decreasing
 
 try:
@@ -35,14 +37,17 @@ try:
             direction = -1
         elif speed <= 0:
             direction = 1
+            rider_in_vehicle = False    # Simulate rider leaving the vehicle at speed 0
 
         # Update payload
         payload["Speed"] = speed
+        payload["Rider_in_vehicle"] = rider_in_vehicle
 
         # Publish updated payload
-        client.publish(topic, json.dumps(payload))
-        print(f"Published Speed={speed} to {topic}")
-
+        client.publish(topic1, json.dumps(payload))
+        client.publish(topic2, json.dumps(payload))
+        print(f"Published Speed={speed} to {topic1}")
+        print(f"Published Rider In Vehicle={rider_in_vehicle} to {topic2}")
         time.sleep(1)  # Wait 1 second
 
 except KeyboardInterrupt:

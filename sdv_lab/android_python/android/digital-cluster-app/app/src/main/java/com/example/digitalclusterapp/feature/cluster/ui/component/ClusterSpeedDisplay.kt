@@ -101,16 +101,16 @@ fun ClusterSpeedDisplay(
             // Cruise Control Display
             Spacer(modifier = Modifier.height(8.dp))
             Column(
-                modifier = Modifier.align(Alignment.BottomCenter)
-                    .padding(bottom = 130.dp),
-                horizontalAlignment = Alignment.End
+                modifier = Modifier.align(Alignment.CenterStart)
+                    .padding(all = 50.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
                     painter = if(cruiseControl) painterResource(id = R.drawable.ic_cruise_control_active) else painterResource(id = R.drawable.ic_cruise_control_default),
                     contentDescription = "Cruise Control Icon",
-                    modifier = Modifier.size(60.dp)
+                    modifier = Modifier.size(30.dp)
                 )
-                Spacer(modifier = Modifier.width(4.dp))
+                Spacer(modifier = Modifier.width(1.dp))
                 Text(
                     text = if (cruiseControl) cruiseControlSpeed.toString() else "----",
                     style = typography.rangeValueText, color = if(cruiseControl) Color.Green else Color.Gray

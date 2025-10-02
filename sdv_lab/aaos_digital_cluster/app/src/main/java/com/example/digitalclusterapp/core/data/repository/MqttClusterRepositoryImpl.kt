@@ -34,4 +34,9 @@ class MqttClusterRepositoryImpl @Inject constructor(
     override suspend fun publishKeyValue(key: String, value: Any): Boolean {
         return publisher.publishKeyValue(key, value)
     }
+
+    
+    override suspend fun updateNotification(newState: String) {
+        binder.updateState(newState)
+    }
 }

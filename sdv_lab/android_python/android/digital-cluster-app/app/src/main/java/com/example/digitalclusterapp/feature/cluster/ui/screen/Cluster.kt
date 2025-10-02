@@ -33,6 +33,8 @@ import com.example.digitalclusterapp.feature.cluster.ui.component.ClusterRightDi
 import com.example.digitalclusterapp.feature.cluster.ui.component.ClusterSpeedDisplay
 import com.example.digitalclusterapp.feature.cluster.ui.component.ClusterTopBar
 import com.example.digitalclusterapp.feature.cluster.ui.component.ControlButtons
+import com.example.digitalclusterapp.feature.cluster.ui.component.NotificationMessage
+
 
 /**
  * A modern automotive instrument cluster UI component.
@@ -141,8 +143,15 @@ fun Cluster(
 //        )
     }
 
+    // Notification Message on the right side
+    NotificationMessage(
+        iconRes = R.drawable.ic_car_accident, // placeholder icon
+        message = state.notificationMessage
+    )
+
+
     // Control buttons
-    Box(Modifier.padding(top = 90.dp)) {
+    Box(Modifier.padding(top = 370.dp)) {
         ControlButtons(
             modifier = Modifier
                 .align(Alignment.BottomEnd)

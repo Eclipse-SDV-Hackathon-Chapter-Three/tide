@@ -45,10 +45,10 @@ class MqttClusterBinder(
         private const val BATCH_TIMEOUT_MS = 50L
 
         // MQTT Configuration
-        private const val BROKER_HOST = "10.0.2.2" // Replace with your broker host
+        private const val BROKER_HOST = "192.168.41.250" // Replace with your broker host
         private const val BROKER_PORT = 1883 // Default MQTT port
         private const val CLIENT_ID_PREFIX = "AndroidCluster-"
-        private const val TOPIC = "vehicle/parameters" // Replace with your topic
+        private const val TOPIC = "vehicle/infotainment/notification_update" // Replace with your topic
     }
 
     init {
@@ -207,9 +207,12 @@ class MqttClusterBinder(
         }
 
         // Only update state if something changed
-        if (changed) {
+        if (true) {
             _state.value = next
-            Log.d(TAG, "Updated state after batch processing: $next")
+            Log.d(TAG, "Updated state after batch processing. New notificationMessage: '${next.notificationMessage}'")
+            Log.d(TAG, "Full updated state: $next")
+        } else {
+            Log.d(TAG, "No state changes detected in batch processing")
         }
     }
 
@@ -222,6 +225,7 @@ class MqttClusterBinder(
         var changed = false
 
         try {
+            Log.d(TAG, "Processing JSON payload: $jsonData")
             // Map JSON fields to ClusterState properties with change tracking
             jsonData.optInt("Speed", current.speed).let {
                 if (it != current.speed) {
@@ -304,6 +308,15 @@ class MqttClusterBinder(
                 if (it != current.location) {
                     next = next.copy(location = it)
                     changed = true
+                }
+            }
+
+            jsonData.optString("notificationMessage", current.notificationMessage).let {
+                Log.d(TAG, "Processing notificationMessage: extracted='$it', current='${current.notificationMessage}'")
+                if (it != current.notificationMessage) {
+                    next = next.copy(notificationMessage = it)
+                    changed = true
+                    Log.d(TAG, "NotificationMessage updated from '${current.notificationMessage}' to '$it'")
                 }
             }
 

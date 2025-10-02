@@ -31,5 +31,6 @@ data class ClusterState(
     val currentCentralScreen: CentralScreenState = CentralScreenState.MODES,
     val modeTop: String = "Race",
     val modeMid: String = "Sport+",
-    val modeBottom: String = "City"
+    val modeBottom: String = "City",
+    val notificationMessage: String = ""
 )

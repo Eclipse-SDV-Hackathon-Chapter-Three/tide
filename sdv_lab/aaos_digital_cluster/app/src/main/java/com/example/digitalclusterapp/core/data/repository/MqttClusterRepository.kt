@@ -11,4 +11,5 @@ interface MqttClusterRepository {
     suspend fun toggleCruiseControl(): Boolean
     suspend fun updateClusterState(newState: ClusterState)
     suspend fun publishKeyValue(key: String, value: Any): Boolean
+    suspend fun updateNotification(newState: String)
 }
