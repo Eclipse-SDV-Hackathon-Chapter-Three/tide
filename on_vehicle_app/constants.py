@@ -17,7 +17,7 @@ CARLA_CLASS_LABELS = {
     9: "Vegetation",
     10: "Terrain",
     11: "Sky",
-    12: "Pedestrian",
+    12: "Car Crash",
     13: "Rider",
     14: "Car",
     15: "Truck",
