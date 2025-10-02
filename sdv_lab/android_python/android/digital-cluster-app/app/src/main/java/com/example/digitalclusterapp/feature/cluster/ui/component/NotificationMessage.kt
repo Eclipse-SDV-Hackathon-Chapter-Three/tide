@@ -47,7 +47,7 @@ fun NotificationMessage(
                     painter = painterResource(id = iconRes),
                     contentDescription = "Warning Icon",
                     contentScale = ContentScale.Fit,
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(65.dp)
                 )
             }
 
