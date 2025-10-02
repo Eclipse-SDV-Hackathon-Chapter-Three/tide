@@ -145,7 +145,7 @@ fun Cluster(
 
     // Notification Message on the right side
     NotificationMessage(
-        iconRes = R.drawable.car-accident-symbol, // placeholder icon
+        iconRes = R.drawable.ic_car_accident, // placeholder icon
         message = state.notificationMessage
     )
 
